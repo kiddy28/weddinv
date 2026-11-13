@@ -96,10 +96,10 @@ const Wishes: React.FC<{ config: AppConfig }> = ({ config: _config }) => {
             <div className="bg-accentDark dark:bg-accent h-[1px] w-12 md:w-24"></div>
           </div>
           <h2 className="font-serif text-5xl leading-none tracking-tighter text-slate-900 italic md:text-[10rem] dark:text-white">
-            Prayers & Wishes
+            Doa & Ucapan
           </h2>
           <p className="tracking-luxury text-[10px] font-black text-balance text-slate-400 uppercase italic md:text-[14px] dark:text-slate-500">
-            Untaian doa dan harapan tulus dari orang-orang tersayang
+            Untaian doa dan harapan tulus dari keluarga serta sahabat tercinta
           </p>
         </div>
         <div className="grid items-start gap-10 md:gap-24 lg:grid-cols-12">
@@ -109,10 +109,10 @@ const Wishes: React.FC<{ config: AppConfig }> = ({ config: _config }) => {
               <div className="relative z-10 space-y-10 md:space-y-16">
                 <div className="space-y-4">
                   <span className="tracking-luxury text-accentDark dark:text-accent text-[10px] font-black uppercase md:text-[12px]">
-                    Guest Book
+                    Buku Tamu
                   </span>
                   <h3 className="font-serif text-3xl text-slate-900 italic md:text-5xl dark:text-white">
-                    Kirim Ucapan
+                    Kirim Doa & Ucapan
                   </h3>
                 </div>
                 <form
@@ -133,19 +133,19 @@ const Wishes: React.FC<{ config: AppConfig }> = ({ config: _config }) => {
                         onChange={(e) => setName(e.target.value)}
                       />
                       <label className="absolute -top-4 left-0 text-[8px] font-black tracking-widest text-slate-400 uppercase md:text-[10px]">
-                        Your Name {isNameLocked && "(Locked)"}
+                        Nama Tamu {isNameLocked && "(Terkunci)"}
                       </label>
                     </div>
                     <div className="group/input relative">
                       <textarea
                         required
                         className="focus:border-accentDark dark:focus:border-accent h-32 w-full resize-none border-b-2 border-slate-100 bg-transparent py-3 font-serif text-lg leading-relaxed text-slate-900 italic transition-all outline-none placeholder:text-slate-200 md:h-52 md:py-6 md:text-2xl dark:border-white/5 dark:text-white dark:placeholder:text-slate-800"
-                        placeholder="Tuliskan harapan terbaik Anda..."
+                        placeholder="Tuliskan doa restu dan harapan terbaik Anda..."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                       />
                       <label className="absolute -top-4 left-0 text-[8px] font-black tracking-widest text-slate-400 uppercase md:text-[10px]">
-                        Your Message
+                        Doa & Pesan
                       </label>
                     </div>
                   </div>
@@ -159,15 +159,15 @@ const Wishes: React.FC<{ config: AppConfig }> = ({ config: _config }) => {
                     }`}
                   >
                     {isSending ? (
-                      "Sending..."
+                      "Mengirimkan..."
                     ) : postSuccess ? (
                       <>
-                        Success <Check className="h-3.5 w-3.5 md:h-5 md:w-5" />
+                        Terkirim <Check className="h-3.5 w-3.5 md:h-5 md:w-5" />
                       </>
                     ) : isNameLocked ? (
-                      "Update Message"
+                      "Perbarui Ucapan"
                     ) : (
-                      "Send Message"
+                      "Kirimkan Ucapan"
                     )}
                     {!isSending && !postSuccess && (
                       <Send className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 md:h-5 md:w-5" />

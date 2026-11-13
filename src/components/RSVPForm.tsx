@@ -96,10 +96,10 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
         <div className="mb-12 space-y-3 text-center md:mb-24">
           <Heart className="text-accentDark dark:text-accent/30 mx-auto mb-2 h-5 w-5 animate-pulse" />
           <h2 className="font-serif text-4xl tracking-tight text-slate-900 italic md:text-8xl dark:text-white">
-            Reservasi
+            Konfirmasi Kehadiran
           </h2>
           <p className="tracking-luxury text-[9px] font-bold text-slate-400 uppercase md:text-[10px] dark:text-slate-500">
-            Mohon konfirmasi kehadiran Anda
+            Mohon kesediaan Bapak/Ibu/Saudara/i untuk mengonfirmasi kehadiran
           </p>
         </div>
 
@@ -124,7 +124,7 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
                     className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-6 py-3 text-[10px] font-bold tracking-widest uppercase transition-colors hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10"
                   >
                     <RefreshCcw className="h-3 w-3" />
-                    Edit Kembali
+                    Ubah Konfirmasi
                   </button>
                 </div>
               ) : (
@@ -140,7 +140,7 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
                           Konfirmasi
                         </h3>
                         <p className="tracking-editorial mt-1.5 text-[8px] font-bold text-slate-400 uppercase md:text-[9px]">
-                          Lengkapi data Anda
+                          Mohon lengkapi formulir di bawah ini
                         </p>
                       </div>
                     </div>
@@ -169,14 +169,14 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
                             }
                           />
                           <label className="tracking-editorial group-focus-within/input:text-accentDark absolute -top-3.5 left-0 text-[7px] font-bold text-slate-400 uppercase transition-colors md:text-[9px]">
-                            Nama {isNameLocked && "(Locked)"}
+                            Nama Tamu {isNameLocked && "(Terkunci)"}
                           </label>
                         </div>
                         <div className="group/input relative">
                           <input
                             type="text"
                             className="focus:border-accentDark dark:focus:border-accent w-full border-b border-slate-200 bg-transparent py-2 font-serif text-base text-slate-900 italic transition-all outline-none placeholder:text-slate-200 md:py-5 md:text-xl dark:border-white/10 dark:text-white"
-                            placeholder="WhatsApp / Phone"
+                            placeholder="Nomor WhatsApp / Telepon"
                             value={formData.phone}
                             onChange={(e) =>
                               setFormData({
@@ -186,14 +186,14 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
                             }
                           />
                           <label className="tracking-editorial group-focus-within/input:text-accentDark absolute -top-3.5 left-0 text-[7px] font-bold text-slate-400 uppercase transition-colors md:text-[9px]">
-                            Kontak
+                            Nomor Kontak
                           </label>
                         </div>
                       </div>
                       <div className="group/input relative mt-8">
                         <textarea
                           className="focus:border-accentDark dark:focus:border-accent w-full resize-none border-b border-slate-200 bg-transparent py-2 font-serif text-base text-slate-900 italic transition-all outline-none placeholder:text-slate-200 md:py-5 md:text-xl dark:border-white/10 dark:text-white"
-                          placeholder="Pesan untuk mempelai (Opsional)"
+                          placeholder="Untaian doa / pesan untuk mempelai (opsional)"
                           rows={2}
                           value={formData.message}
                           onChange={(e) =>
@@ -204,7 +204,7 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
                           }
                         />
                         <label className="tracking-editorial group-focus-within/input:text-accentDark absolute -top-3.5 left-0 text-[7px] font-bold text-slate-400 uppercase transition-colors md:text-[9px]">
-                          Pesan
+                          Doa & Harapan
                         </label>
                       </div>
                       <div className="space-y-3 md:space-y-6">
@@ -241,7 +241,7 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
                       {formData.attendance === AttendanceStatus.HADIR && (
                         <div className="animate-reveal space-y-3">
                           <p className="tracking-editorial mb-1 text-[8px] font-bold text-slate-400 uppercase md:text-[9px]">
-                            Jumlah Tamu (Max {maxGuests})
+                            Jumlah Tamu (Maks. {maxGuests} Orang)
                           </p>
                           <div className="flex items-center gap-4">
                             <button
@@ -273,10 +273,10 @@ const RSVPForm: React.FC<{ config: AppConfig }> = ({ config }) => {
                         className="bg-primary dark:bg-accentDark tracking-luxury group flex w-full items-center justify-center gap-3 rounded-xl py-3.5 text-[9px] font-bold text-white uppercase shadow-sm transition-all duration-700 hover:shadow-xl active:scale-95 disabled:opacity-50 md:rounded-3xl md:py-6 md:text-[11px]"
                       >
                         {isSubmitting
-                          ? "Sending..."
+                          ? "Mengirimkan..."
                           : isNameLocked
-                            ? "Update RSVP"
-                            : "Send RSVP"}
+                            ? "Perbarui Konfirmasi"
+                            : "Kirim Konfirmasi"}
                         <Send className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 md:h-5 md:w-5" />
                       </button>
                     </form>

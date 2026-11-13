@@ -48,6 +48,8 @@ const DEFAULT_RAW: Record<string, string> = {
   TEXT_FAMILY: "",
   TEXT_GIFT_TITLE: "",
   TEXT_GIFT_DESC: "",
+  GIFT_ADDRESS: "",
+  GIFT_RECEIVER: "",
 };
 
 let cache: { data: AppConfig; raw: Record<string, string> } | null = null;

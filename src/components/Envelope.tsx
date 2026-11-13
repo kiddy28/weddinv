@@ -59,7 +59,7 @@ const Envelope: React.FC<EnvelopeProps> = ({ onOpen, config }) => {
             </div>
             <div className="space-y-2">
               <span className="block text-[10px] font-light tracking-[0.5em] text-white/40 uppercase md:text-[12px]">
-                The Wedding of
+                Undangan Pernikahan
               </span>
               <h1 className="font-serif text-6xl leading-none tracking-tighter text-white italic md:text-9xl">
                 {config.couple.bride.name}
@@ -75,7 +75,7 @@ const Envelope: React.FC<EnvelopeProps> = ({ onOpen, config }) => {
             <div className="frosted-glass relative space-y-8 overflow-hidden rounded-[2.8rem] border border-white/20 p-10 shadow-2xl md:p-16 dark:border-white/10">
               <div className="relative z-10 space-y-3">
                 <p className="text-accentDark dark:text-accent text-[11px] font-bold tracking-[0.3em] uppercase transition-colors duration-500 md:text-[13px]">
-                  Kepada Yth. Bapak/Ibu/Sdr/i:
+                  Yth. Bapak/Ibu/Saudara/i:
                 </p>
                 <div className="dark:via-accent/30 mx-auto h-[1px] w-16 bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-50"></div>
               </div>
@@ -86,8 +86,8 @@ const Envelope: React.FC<EnvelopeProps> = ({ onOpen, config }) => {
               </div>
               <div className="relative z-10 pt-2">
                 <p className="mx-auto max-w-xs text-[10px] leading-relaxed font-light text-slate-600 italic transition-colors duration-500 md:text-[12px] dark:text-slate-400">
-                  Kami mengundang Anda untuk merayakan kebahagiaan kami dalam
-                  ikatan suci pernikahan.
+                  Dengan penuh kebahagiaan dan kerendahan hati, kami mengundang
+                  Anda untuk hadir menyaksikan pernikahan kami.
                 </p>
               </div>
             </div>

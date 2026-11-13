@@ -1,8 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import App from "../App";
+import { getConfig } from "../lib/db";
+
+const config = getConfig();
+const brideName = config.BRIDE_NICKNAME || "Bride";
+const groomName = config.GROOM_NICKNAME || "Groom";
+const heroImage = config.HERO_IMAGE || "/thumbnail.png";
+
+// Nama tamu personal dari parameter URL (?to=Nama+Tamu)
+const toParam = Astro.url.searchParams.get("to");
+const guestSuffix = toParam ? ` | Yth. ${toParam}` : "";
+
+const title = `The Wedding of ${brideName} & ${groomName}${guestSuffix}`;
+const description = `Undangan Pernikahan ${brideName} & ${groomName}. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.`;
 ---
 
-<Layout title="The Wedding of Fera & Yahya">
+<Layout title={title} description={description} image={heroImage}>
   <App client:only="react" />
 </Layout>

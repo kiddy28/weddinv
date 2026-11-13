@@ -454,6 +454,23 @@ const CONFIG_SECTIONS: { title: string; fields: ConfigField[] }[] = [
     ],
   },
   {
+    title: "Kirim Kado Fisik (Rumah)",
+    fields: [
+      {
+        key: "GIFT_ADDRESS",
+        label: "Alamat Rumah Penerima Kado",
+        type: "textarea",
+        placeholder: "Alamat rumah lengkap untuk pengiriman kado fisik...",
+      },
+      {
+        key: "GIFT_RECEIVER",
+        label: "Nama Penerima & No. Kontak di Rumah",
+        type: "text",
+        placeholder: "Contoh: Bpk. Bambang / Pengantin (0812-3456-7890)",
+      },
+    ],
+  },
+  {
     title: "Rekening Bank",
     fields: [
       {

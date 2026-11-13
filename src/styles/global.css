@@ -19,8 +19,29 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-soft: pulseSoft 4s ease-in-out infinite;
   --animate-spin-slow: spin 8s linear infinite;
+  --animate-ken-burns: kenBurns 12s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 3.5s infinite;
 
   /* Keyframes */
+  @keyframes kenBurns {
+    0% {
+      transform: scale(1) translate(0, 0);
+    }
+    50% {
+      transform: scale(1.08) translate(-1%, -1%);
+    }
+    100% {
+      transform: scale(1.04) translate(1%, 0.5%);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-150%) skewX(-20deg);
+    }
+    100% {
+      transform: translateX(250%) skewX(-20deg);
+    }
+  }
   @keyframes subtleZoom {
     0% {
       transform: scale(1);

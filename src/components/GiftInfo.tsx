@@ -11,6 +11,10 @@ const GiftInfo: React.FC<{ config: AppConfig }> = ({ config }) => {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
+  const giftAddress =
+    config.gift?.address || "Alamat rumah belum diatur di Pengaturan Admin";
+  const giftReceiver = config.gift?.receiver || "";
+
   return (
     <section
       id="gift"
@@ -75,20 +79,30 @@ const GiftInfo: React.FC<{ config: AppConfig }> = ({ config }) => {
           <div className="text-accentDark dark:text-accent animate-float flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border border-slate-100 bg-slate-50 shadow-sm md:h-28 md:w-28 dark:border-white/10 dark:bg-white/5">
             <MapPin className="h-6 w-6 md:h-12 md:w-12" />
           </div>
-          <div className="relative z-10 flex-grow space-y-1.5 md:space-y-4">
+          <div className="relative z-10 flex-grow space-y-2 md:space-y-4">
             <div className="text-accentDark dark:text-accent flex items-center justify-center gap-2.5 md:justify-start">
               <Sparkles className="h-3.5 w-3.5 md:h-5 md:w-5" />
               <h4 className="font-serif text-xl tracking-tight italic md:text-5xl">
-                Kirim Kado Fisik
+                Kirim Kado Fisik (Rumah)
               </h4>
             </div>
-           <p className="text-sm leading-relaxed font-light text-balance text-slate-500 italic md:text-2xl dark:text-slate-400">
-              Jl. Byakugan No. 123, Desa Konoha, Kecamatan Leaf Village, Kabupaten Hidden Leaf, Provinsi Fire Country, 12345
-           </p>
+            {giftReceiver && (
+              <p className="text-xs font-bold tracking-wider text-accentDark dark:text-accent uppercase">
+                Penerima: {giftReceiver}
+              </p>
+            )}
+            <p className="text-sm leading-relaxed font-light text-balance text-slate-600 italic md:text-xl dark:text-slate-300">
+              {giftAddress}
+            </p>
           </div>
           <button
             onClick={() =>
-              copyToClipboard("Jl. Byakugan No. 123, Desa Konoha, Kecamatan Leaf Village, Kabupaten Hidden Leaf, Provinsi Fire Country, 12345")
+              copyToClipboard(
+                giftReceiver
+                  ? `${giftAddress}\n(Penerima: ${giftReceiver})`
+                  : giftAddress,
+                "address-gift"
+              )
             }
             className={`tracking-luxury relative z-10 inline-flex w-full items-center justify-center gap-3 rounded-xl px-8 py-3.5 text-[9px] font-bold uppercase shadow-md transition-all md:w-auto md:rounded-[2.5rem] md:px-14 md:py-6 md:text-[12px] ${
               copiedId === "address-gift"
@@ -101,7 +115,7 @@ const GiftInfo: React.FC<{ config: AppConfig }> = ({ config }) => {
             ) : (
               <Copy className="h-4 w-4 md:h-6 md:w-6" />
             )}
-            Salin Alamat
+            {copiedId === "address-gift" ? "Alamat Berhasil Disalin" : "Salin Alamat Rumah"}
           </button>
         </div>
       </div>

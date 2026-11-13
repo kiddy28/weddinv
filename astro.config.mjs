@@ -1,4 +1,4 @@
-import vercel from "@astrojs/vercel";
+import node from "@astrojs/node";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@tailwindcss/vite";
@@ -9,9 +9,11 @@ export default defineConfig({
   site: "https://wedding.zedlabs.id",
   integrations: [react(), sitemap()],
   output: "server",
-  adapter: vercel(),
+  adapter: node({ mode: "standalone" }),
   vite: {
-
+    server: {
+      allowedHosts: true,
+    },
     plugins: [
       tailwind(),
       VitePWA({

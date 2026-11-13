@@ -13,10 +13,15 @@ const {
   image = "/thumbnail.png",
 } = Astro.props;
 
+const siteOrigin = Astro.site || "https://wedding.zedlabs.id";
 const canonicalURL = new URL(
-  Astro.url.pathname,
-  Astro.site || "https://wedding.zedlabs.id"
+  Astro.url.pathname + Astro.url.search,
+  siteOrigin
 );
+
+const ogImage = image.startsWith("http")
+  ? image
+  : new URL(image, siteOrigin).href;
 ---
 
 <!doctype html>
@@ -36,13 +41,13 @@ const canonicalURL = new URL(
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImage} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
+    <meta property="twitter:image" content={ogImage} />
 
     <meta name="theme-color" content="#020617" />
 

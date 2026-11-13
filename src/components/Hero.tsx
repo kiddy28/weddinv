@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, Sparkles } from "lucide-react";
 import type { AppConfig } from "../types";
+import { parseDateFromText } from "../utils/configParser";
 
 const Hero: React.FC<{ config: AppConfig }> = ({ config }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -15,10 +16,26 @@ const Hero: React.FC<{ config: AppConfig }> = ({ config }) => {
     const params = new URLSearchParams(window.location.search);
     setGuestName(params.get("to"));
 
-    // Tentukan tanggal acara secara manual di sini (Format: YYYY-MM-DDTHH:mm:ss)
-    const targetDate = new Date("2027-12-25T08:00:00").getTime();
+    // Deteksi tanggal acara secara cerdas: utamakan teks tanggal yang terlihat di layar
+    const dateText = config.events?.akad?.date || config.events?.resepsi?.date;
+    const timeText = config.events?.akad?.startTime || config.events?.resepsi?.startTime;
+    const parsedFromText = parseDateFromText(dateText, timeText);
 
-    const timer = setInterval(() => {
+    let eventDate: Date;
+    if (parsedFromText && !isNaN(parsedFromText.getTime())) {
+      eventDate = parsedFromText;
+    } else if (
+      config.events?.akad?.startDateTime instanceof Date &&
+      !isNaN(config.events.akad.startDateTime.getTime())
+    ) {
+      eventDate = config.events.akad.startDateTime;
+    } else {
+      eventDate = new Date("2027-12-25T08:00:00");
+    }
+
+    const targetDate = eventDate.getTime();
+
+    const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
@@ -31,10 +48,21 @@ const Hero: React.FC<{ config: AppConfig }> = ({ config }) => {
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
-    }, 1000);
+    };
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [
+    config.events?.akad?.date,
+    config.events?.akad?.startTime,
+    config.events?.akad?.startDateTime,
+    config.events?.resepsi?.date,
+    config.events?.resepsi?.startTime,
+  ]);
 
   const handleScrollToContent = () => {
     document.getElementById("couple")?.scrollIntoView({ behavior: "smooth" });
@@ -57,7 +85,7 @@ const Hero: React.FC<{ config: AppConfig }> = ({ config }) => {
           <div className="flex items-center justify-center gap-3 md:gap-4">
             <div className="h-[1px] w-6 bg-white/30 md:w-20"></div>
             <span className="tracking-luxury text-[8px] font-light text-white/80 uppercase md:text-[12px]">
-              The Wedding Celebration
+              Undangan Pernikahan
             </span>
             <div className="h-[1px] w-6 bg-white/30 md:w-20"></div>
           </div>
@@ -70,7 +98,7 @@ const Hero: React.FC<{ config: AppConfig }> = ({ config }) => {
 
           {guestName && (
             <p className="animate-reveal mt-4 font-serif text-xl text-white/80 italic">
-              Kepada Yth. {guestName}
+              Yth. {guestName}
             </p>
           )}
 

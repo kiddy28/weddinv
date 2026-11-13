@@ -74,6 +74,10 @@ export interface AppConfig {
     };
     gift: { title: string; desc: string };
   };
+  gift: {
+    address: string;
+    receiver: string;
+  };
   telegram: {
     botToken: string;
     chatId: string;

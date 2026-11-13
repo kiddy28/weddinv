@@ -84,7 +84,7 @@ const EventDetails: React.FC<{ config: AppConfig }> = ({ config }) => {
                 </div>
                 <div className="space-y-2 md:space-y-4">
                   <span className="tracking-luxury text-accentDark dark:text-accent text-[9px] font-bold uppercase md:text-[10px]">
-                    Our Sacred Day
+                    Hari Bahagia Kami
                   </span>
                   <h3 className="font-serif text-3xl leading-tight text-slate-900 italic md:text-7xl dark:text-white">
                     {ev.title}
@@ -114,7 +114,7 @@ const EventDetails: React.FC<{ config: AppConfig }> = ({ config }) => {
                     className="bg-primary dark:bg-accentDark tracking-editorial flex w-full items-center justify-center gap-3 rounded-2xl py-4 text-[10px] font-bold text-white uppercase transition-all hover:shadow-2xl active:scale-95 md:gap-5 md:rounded-3xl md:py-6 md:text-[11px]"
                   >
                     <CalendarPlus className="h-4 w-4 md:h-5 md:w-5" />
-                    Save The Date
+                    Simpan Tanggal
                     <ChevronDown
                       className={`h-3 w-3 transition-transform duration-500 md:h-4 md:w-4 ${
                         activeDropdown === type ? "rotate-180" : ""
@@ -175,7 +175,7 @@ const EventDetails: React.FC<{ config: AppConfig }> = ({ config }) => {
                 ) : (
                   <Copy className="text-accentDark dark:text-accent h-4 w-4 md:h-5 md:w-5" />
                 )}
-                {copied ? "Address Copied" : "Copy Address"}
+                {copied ? "Alamat Berhasil Disalin" : "Salin Alamat"}
               </button>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${config.venue.latitude},${config.venue.longitude}`}
@@ -183,7 +183,7 @@ const EventDetails: React.FC<{ config: AppConfig }> = ({ config }) => {
                 rel="noopener noreferrer"
                 className="bg-primary dark:text-primary tracking-editorial flex w-full items-center justify-center gap-3 rounded-xl px-6 py-4 text-[10px] font-bold text-white uppercase transition-all hover:shadow-2xl sm:w-1/2 md:gap-4 md:rounded-[2rem] md:px-12 md:py-5 md:text-[11px] lg:w-auto dark:bg-white"
               >
-                <ExternalLink className="h-4 w-4 md:h-5 md:w-5" /> Open In Maps
+                <ExternalLink className="h-4 w-4 md:h-5 md:w-5" /> Buka Petunjuk Lokasi
               </a>
             </div>
           </div>
